@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin Neigel Photography</title>
+    <!-- Importing Fraunces & Montserrat from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Montserrat:ital,wght@0,300;0,500;0,800;1,800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-offwhite: #121212;
+            --text-black: #FAF9F6;
+            --accent-orange: #FF6F3C;
+            --font-header: 'Fraunces', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-offwhite);
+            color: var(--text-black);
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, .brand-logo {
+            font-family: var(--font-header);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 900;
+        }
+
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-offwhite);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            border-bottom: 2px solid var(--text-black);
+            z-index: 1000;
+        }
+
+        .brand-logo {
+            font-size: 1.4rem;
+            color: var(--text-black);
+            text-decoration: none;
+        }
+
+        .brand-logo span {
+            color: var(--accent-orange);
+        }
+
+        nav a {
+            color: var(--text-black);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 5% 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+        }
+
+        .promo-bar {
+            display: inline-block;
+            background-color: var(--accent-orange);
+            color: #121212;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.6rem 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Work / Masonry Gallery (Brick Wall Effect) */
+        #work {
+            padding: 3rem 5% 5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-left: 6px solid var(--accent-orange);
+            padding-left: 1rem;
+        }
+
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.2rem;
+        }
+
+        @media (max-width: 900px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1.2rem;
+            border: 2px solid var(--text-black);
+            overflow: hidden;
+            background-color: #1e1e1e;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #0a0a0a;
+            color: var(--text-black);
+            padding: 5rem 5%;
+            border-top: 1px solid #222;
+        }
+
+        #contact .section-title {
+            border-left-color: var(--accent-orange);
+            color: var(--text-black);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+            align-items: start;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* Copy Email Button */
+        .email-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--accent-orange);
+            color: #121212;
+            font-family: var(--font-header);
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: center;
+            border: 2px solid var(--accent-orange);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .email-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Social Links Styling */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.4rem;
+            border: 2px solid var(--accent-orange);
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .social-btn:hover {
+            background-color: var(--accent-orange);
+            color: #121212;
+        }
+
+        footer {
+            padding: 2rem 5%;
+            background-color: #0a0a0a;
+            border-top: 1px solid #222;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="#" class="brand-logo">Benjamin Neigel <span>.</span></a>
+        <nav>
+            <a href="#work">Work</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="hero">
+        <h1>Benjamin Neigel Photography</h1>
+        <div class="promo-bar">
+            Currently taking on select work for free to build portfolio
+        </div>
+    </section>
+
+    <!-- Work / Gallery -->
+    <section id="work">
+        <h2 class="section-title">Selected Work</h2>
+        <div class="masonry-grid">
+            <div class="gallery-item"><img src="images/purplecar2.jpg" alt="Purple Car"></div>
+            <div class="gallery-item"><img src="images/redcar.jpg" alt="Red Car"></div>
+            <div class="gallery-item"><img src="images/rockychair.jpg" alt="Rocky Chair"></div>
+            <div class="gallery-item"><img src="images/rockychair-2.jpg" alt="Rocky Chair 2"></div>
+            <div class="gallery-item"><img src="images/squirrelclose.jpg" alt="Squirrel Close Up"></div>
+            <div class="gallery-item"><img src="images/squirreltree1.jpg" alt="Squirrel in Tree"></div>
+            <div class="gallery-item"><img src="images/squirrleb&w1.jpg" alt="Squirrel Black and White"></div>
+            <div class="gallery-item"><img src="images/starsbetter.jpg" alt="Stars"></div>
+            <div class="gallery-item"><img src="images/starsbetter1.jpg" alt="Night Sky Stars"></div>
+            <div class="gallery-item"><img src="images/succulent.jpg" alt="Succulent Plant"></div>
+            <div class="gallery-item"><img src="images/whitecarblueinterior2.jpg" alt="White Car Interior"></div>
+        </div>
+    </section>
+
+    <!-- Contact & Socials -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p>Available for project inquiries and creative collaboration.</p>
+
+                <p><strong>Follow along:</strong></p>
+                <div class="social-links">
+                    <!-- Instagram Link -->
+                    <a href="https://www.instagram.com/benjaminnei095" target="_blank" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Instagram
+                    </a>
+
+                    <!-- TikTok Link -->
+                    <a href="https://www.tiktok.com/@benjaminnei095" target="_blank" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.67 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.31 1.54-1.28 2.53.02 1.01.59 1.94 1.48 2.41.83.45 1.86.49 2.72.1.81-.35 1.46-1.07 1.69-1.93.14-.54.19-1.1.18-1.67.02-5.46.01-10.93.02-16.39z"/></svg>
+                        TikTok
+                    </a>
+                </div>
+            </div>
+
+            <!-- One-Click Copy Email Button -->
+            <div>
+                <button onclick="copyEmail()" class="email-btn" id="copyBtn">
+                    Copy Email Address
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; Benjamin Neigel Photography. All rights reserved.
+    </footer>
+
+    <script>
+        function copyEmail() {
+            // Replace with your actual email address
+            const email = "yourname@email.com"; 
+            navigator.clipboard.writeText(email);
+            
+            const btn = document.getElementById("copyBtn");
+            btn.innerText = "Copied to Clipboard!";
+            setTimeout(() => {
+                btn.innerText = "Copy Email Address";
+            }, 2500);
+        }
+    </script>
+
+</body>
+</html>
