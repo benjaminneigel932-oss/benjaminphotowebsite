@@ -136,31 +136,6 @@
             column-gap: 1.2rem;
         }
 
-        @media (max-width: 900px) {
-            .masonry-grid {
-                column-count: 2;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .masonry-grid {
-                column-count: 1;
-            }
-            
-            header {
-                padding: 1rem 4%;
-            }
-            
-            .brand-logo {
-                font-size: 1.3rem;
-            }
-            
-            nav a {
-                margin-left: 0.75rem;
-                font-size: 0.85rem;
-            }
-        }
-
         .gallery-item {
             break-inside: avoid;
             margin-bottom: 1.2rem;
@@ -195,36 +170,47 @@
         }
 
         .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
             margin-top: 2rem;
-            align-items: start;
+            max-width: 800px;
         }
 
         .contact-info p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-size: 1rem;
             font-weight: 300;
         }
 
-        .email-btn {
-            display: inline-block;
-            padding: 1rem 2rem;
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 1.5rem;
             background-color: var(--accent-orange);
             color: #121212;
             font-family: var(--font-header);
             font-weight: 900;
+            font-size: 0.85rem;
             text-transform: uppercase;
             text-align: center;
             border: 2px solid var(--accent-orange);
             cursor: pointer;
             transition: opacity 0.2s ease;
             text-decoration: none;
-            max-width: 100%;
+            flex: 1;
+            min-width: 220px;
         }
 
-        .email-btn:hover {
+        .btn-primary:hover {
             opacity: 0.9;
         }
 
@@ -232,15 +218,16 @@
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             flex-wrap: wrap;
         }
 
         .social-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.6rem;
-            padding: 0.7rem 1.4rem;
+            padding: 0.8rem 1.4rem;
             border: 2px solid var(--accent-orange);
             color: var(--accent-orange);
             text-decoration: none;
@@ -248,6 +235,8 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             transition: all 0.2s ease;
+            flex: 1;
+            min-width: 140px;
         }
 
         .social-btn svg {
@@ -268,6 +257,40 @@
             text-align: center;
             font-size: 0.8rem;
             color: #888;
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 900px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+            
+            header {
+                padding: 1rem 4%;
+            }
+            
+            .brand-logo {
+                font-size: 1.3rem;
+            }
+            
+            nav a {
+                margin-left: 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .action-buttons, .social-links {
+                flex-direction: column;
+            }
+
+            .btn-primary, .social-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -315,7 +338,16 @@
             <div class="contact-info">
                 <p>Available for project inquiries and creative collaboration.</p>
 
-                <p><strong>Follow along:</strong></p>
+                <div class="action-buttons">
+                    <button onclick="copyEmail()" class="btn-primary" id="copyBtn">
+                        Copy Email Address
+                    </button>
+                    <a href="tel:2365979077" class="btn-primary">
+                        Call / Text: (236) 597-9077
+                    </a>
+                </div>
+
+                <p style="margin-top: 2rem;"><strong>Follow along:</strong></p>
                 <div class="social-links">
                     <!-- Instagram Link -->
                     <a href="https://www.instagram.com/benjaminnei095" target="_blank" class="social-btn">
@@ -329,13 +361,6 @@
                         TikTok
                     </a>
                 </div>
-            </div>
-
-            <!-- One-Click Copy Email Button -->
-            <div>
-                <button onclick="copyEmail()" class="email-btn" id="copyBtn">
-                    Copy Email Address
-                </button>
             </div>
         </div>
     </section>
