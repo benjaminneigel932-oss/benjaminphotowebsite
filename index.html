@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benjamin Neigel Photography</title>
-    <!-- Importing Fraunces & Montserrat from Google Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800&family=Unbounded:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg-offwhite: #121212;
             --text-black: #FAF9F6;
-            --accent-orange: #BC3B20;
+            --accent-orange: #121212;
             --font-header: 'Unbounded', sans-serif;
             --font-body: 'Montserrat', sans-serif;
         }
@@ -25,7 +25,15 @@
         }
 
         body {
-            background-color: var(--bg-offwhite);
+            min-height: 100vh;
+            background-color: hsla(0,0%,0%,1);
+            background-image:
+                radial-gradient(at 40% 20%, hsla(25,100%,50%,1) 0px, transparent 50%),
+                radial-gradient(at 83% 14%, hsla(36,100%,50%,1) 0px, transparent 50%),
+                radial-gradient(at 100% 89%, hsla(355,0%,0%,1) 0px, transparent 50%),
+                radial-gradient(at 65% 56%, hsla(0,100%,50%,1) 0px, transparent 50%),
+                radial-gradient(at 18% 80%, hsla(19,100%,36%,1) 0px, transparent 50%);
+            background-attachment: fixed;
             color: var(--text-black);
             font-family: var(--font-body);
             line-height: 1.6;
@@ -43,7 +51,8 @@
         header {
             position: sticky;
             top: 0;
-            background-color: var(--bg-offwhite);
+            background-color: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -98,7 +107,7 @@
             margin-top: 1.5rem;
         }
 
-        /* Work / Masonry Gallery (Brick Wall Effect) */
+        /* Work / Masonry Gallery */
         #work {
             padding: 3rem 5% 5rem;
         }
@@ -148,7 +157,8 @@
 
         /* Contact Section */
         #contact {
-            background-color: #0a0a0a;
+            background-color: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
             color: var(--text-black);
             padding: 5rem 5%;
             border-top: 1px solid #222;
@@ -173,7 +183,6 @@
             font-weight: 300;
         }
 
-        /* Copy Email Button */
         .email-btn {
             display: inline-block;
             padding: 1rem 2rem;
@@ -186,6 +195,7 @@
             border: 2px solid var(--accent-orange);
             cursor: pointer;
             transition: opacity 0.2s ease;
+            text-decoration: none;
         }
 
         .email-btn:hover {
@@ -310,7 +320,6 @@
 
     <script>
         function copyEmail() {
-            // Replace with your actual email address
             const email = "benjaminneigel095@gmail.com"; 
             navigator.clipboard.writeText(email);
             
