@@ -24,6 +24,11 @@
             padding: 0;
         }
 
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         body {
             min-height: 100vh;
             background-color: hsla(0,0%,0%,1);
@@ -45,6 +50,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 900;
+            word-break: break-word;
         }
 
         /* Navigation */
@@ -59,10 +65,11 @@
             padding: 1.5rem 5%;
             border-bottom: 2px solid var(--text-black);
             z-index: 1000;
+            width: 100%;
         }
 
         .brand-logo {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: var(--text-black);
             text-decoration: none;
         }
@@ -74,9 +81,9 @@
         nav a {
             color: var(--text-black);
             text-decoration: none;
-            margin-left: 2rem;
+            margin-left: 1rem;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: color 0.2s ease;
         }
 
@@ -86,12 +93,12 @@
 
         /* Hero Section */
         .hero {
-            padding: 5rem 5% 3rem;
+            padding: 4rem 5% 2rem;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(1.8rem, 6vw, 4.5rem);
             line-height: 1.1;
         }
 
@@ -100,20 +107,21 @@
             background-color: var(--accent-orange);
             color: #121212;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 0.6rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             margin-top: 1.5rem;
+            max-width: 100%;
         }
 
         /* Work / Masonry Gallery */
         #work {
-            padding: 3rem 5% 5rem;
+            padding: 2rem 5% 4rem;
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 2rem;
             border-left: 6px solid var(--accent-orange);
             padding-left: 1rem;
@@ -133,6 +141,19 @@
         @media (max-width: 600px) {
             .masonry-grid {
                 column-count: 1;
+            }
+            
+            header {
+                padding: 1rem 4%;
+            }
+            
+            .brand-logo {
+                font-size: 1rem;
+            }
+            
+            nav a {
+                margin-left: 0.75rem;
+                font-size: 0.85rem;
             }
         }
 
@@ -160,7 +181,7 @@
             background-color: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(10px);
             color: var(--text-black);
-            padding: 5rem 5%;
+            padding: 4rem 5%;
             border-top: 1px solid #222;
         }
 
@@ -171,8 +192,8 @@
 
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             margin-top: 2rem;
             align-items: start;
         }
@@ -196,6 +217,7 @@
             cursor: pointer;
             transition: opacity 0.2s ease;
             text-decoration: none;
+            max-width: 100%;
         }
 
         .email-btn:hover {
@@ -242,18 +264,6 @@
             text-align: center;
             font-size: 0.8rem;
             color: #888;
-        }
-
-        /* Responsive adjustments for mobile screens */
-        @media (max-width: 768px) {
-            .masonry-grid {
-                column-count: 1;
-                gap: 1rem;
-            }
-
-            body {
-                padding: 0 1rem;
-            }
         }
     </style>
 </head>
