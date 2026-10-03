@@ -43,7 +43,6 @@
             line-height: 1.6;
         }
 
-        /* Typography */
         h1, h2, h3 {
             font-family: var(--font-header);
             text-transform: uppercase;
@@ -52,7 +51,6 @@
             word-break: break-word;
         }
 
-        /* Navigation */
         header {
             position: sticky;
             top: 0;
@@ -66,7 +64,6 @@
             width: 100%;
         }
 
-        /* Punched-out logo effect */
         .brand-logo {
             font-family: var(--font-header);
             font-size: 1.6rem;
@@ -94,7 +91,6 @@
             color: var(--accent-orange);
         }
 
-        /* Hero Section */
         .hero {
             padding: 4rem 5% 2rem;
             text-align: center;
@@ -118,7 +114,6 @@
             max-width: 100%;
         }
 
-        /* Work / Masonry Gallery */
         #work {
             padding: 2rem 5% 4rem;
         }
@@ -142,6 +137,7 @@
             overflow: hidden;
             background-color: #1e1e1e;
             cursor: pointer;
+            position: relative;
         }
 
         .gallery-item img {
@@ -151,16 +147,37 @@
             transition: transform 0.3s ease, opacity 0.2s ease;
         }
 
-        .gallery-item:hover img {
+        .gallery-item:not(.panorama):hover img {
             transform: scale(1.02);
         }
 
-        .gallery-item:active img {
+        .gallery-item:not(.panorama):active img {
             transform: scale(0.97);
             opacity: 0.8;
         }
 
-        /* Modal Box & Opening/Closing Animations */
+        /* Fixed Panorama Styles */
+        .gallery-item.panorama {
+            aspect-ratio: 4 / 3; /* Forces a standard photo appearance in the grid */
+            cursor: grab;
+            overflow: hidden; /* Hide scrollbars completely */
+            display: flex;
+        }
+        
+        .gallery-item.panorama:active {
+            cursor: grabbing;
+        }
+
+        .gallery-item.panorama img {
+            height: 100%;
+            width: auto;
+            max-width: none;
+            pointer-events: none; /* Stops the browser from trying to drag the image file */
+            user-select: none;
+            -webkit-user-drag: none;
+            transition: opacity 0.2s ease;
+        }
+
         .modal {
             border: 1px solid #333;
             border-radius: 8px;
@@ -172,7 +189,6 @@
             margin: auto;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             
-            /* Animation base styles */
             opacity: 0;
             transform: scale(0.85);
             transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -251,7 +267,6 @@
             transform: scale(1.2);
         }
 
-        /* Contact Section */
         #contact {
             background-color: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(10px);
@@ -310,7 +325,6 @@
             opacity: 0.9;
         }
 
-        /* Social Links Styling */
         .social-links {
             display: flex;
             gap: 1rem;
@@ -355,7 +369,6 @@
             color: #888;
         }
 
-        /* Responsive Tweaks */
         @media (max-width: 900px) {
             .masonry-grid {
                 column-count: 2;
@@ -365,27 +378,6 @@
         @media (max-width: 600px) {
             .masonry-grid {
                 column-count: 1;
-            }
-            
-            header {
-                padding: 1rem 4%;
-            }
-            
-            .brand-logo {
-                font-size: 1.3rem;
-            }
-            
-            nav a {
-                margin-left: 0.75rem;
-                font-size: 0.85rem;
-            }
-
-            .action-buttons, .social-links {
-                flex-direction: column;
-            }
-
-            .btn-primary, .social-btn {
-                width: 100%;
             }
         }
     </style>
@@ -409,94 +401,89 @@
 
     <section id="work">
         <h2 class="section-title">Selected Work</h2>
+        
         <div class="masonry-grid">
+            
+            <div class="gallery-item panorama">
+                <img src="images/beach.jpg" alt=""
+                     data-camera="Sony α6300" data-lens="Sony E PZ 16-50mm" data-fstop="ƒ7.1" data-iso="100" data-shutter="1/100s" data-mp="59MP">
+            </div>
+            
+            <div class="gallery-item">
+                <img src="images/bridgeabstract.jpg" alt=""
+                     data-camera="Sony α6300" data-lens="Sony E PZ 16-50mm" data-fstop="ƒ5.6" data-iso="6400" data-shutter="1/30s" data-mp="24MP">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/bridgefull.jpg" alt=""
+                     data-camera="Sony α6300" data-lens="Sony E PZ 16-50mm" data-fstop="ƒ5.6" data-iso="6400" data-shutter="1/30s" data-mp="24MP">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/Mural.jpg" alt=""
+                     data-camera="Sony α6300" data-lens="Sony FE 28-70mm" data-fstop="ƒ5" data-iso="100" data-shutter="1/160s" data-mp="24MP">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/purplebuilding.jpg" alt=""
+                     data-camera="Sony α6300" data-lens="" data-fstop="ƒ5" data-iso="160" data-shutter="1/160s" data-mp="19MP">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/skyline.jpg" alt=""
+                     data-camera="Sony α6300" data-lens="Sony E PZ 16-50mm" data-fstop="ƒ5" data-iso="6400" data-shutter="1/20s" data-mp="24MP">
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/tiedyebuilding.jpg" alt=""
+                     data-camera="Sony α6300" data-lens="Sony E PZ 16-50mm" data-fstop="ƒ11" data-iso="100" data-shutter="1/100s" data-mp="11MP">
+            </div>
+
+            <div class="gallery-item panorama">
+                <img src="images/neonskyline.jpg" alt=""
+                     data-camera="Sony α6300" data-lens="Sony FE 28-70mm" data-fstop="ƒ3.5" data-iso="6400" data-shutter="1/60s" data-mp="60MP">
+            </div>
+
+            <!-- Older Photos (White Car Interior placed right here where the succulent used to be) -->
             <div class="gallery-item">
                 <img src="images/purplecar2.jpg" alt="Purple Car"
-                     data-camera="Canon EOS Rebel T6"
-                     data-lens="EF-S 18-55mm"
-                     data-fstop="f/7.1"
-                     data-iso="100"
-                     data-shutter="1/160s">
+                     data-camera="Canon EOS Rebel T6" data-lens="EF-S 18-55mm" data-fstop="f/7.1" data-iso="100" data-shutter="1/160s" data-mp="11MP">
             </div>
             <div class="gallery-item">
                 <img src="images/redcar.jpg" alt="Red Car"
-                     data-camera="Canon EOS Rebel T6"
-                     data-lens="EF-S 18-55mm"
-                     data-fstop="f/7.1"
-                     data-iso="100"
-                     data-shutter="1/125s">
+                     data-camera="Canon EOS Rebel T6" data-lens="EF-S 18-55mm" data-fstop="f/7.1" data-iso="100" data-shutter="1/125s" data-mp="14MP">
             </div>
             <div class="gallery-item">
                 <img src="images/rockychair.jpg" alt="Rocky Chair"
-                     data-camera="Canon EOS Rebel T6"
-                     data-lens="EF-S 18-55mm"
-                     data-fstop="f/5.0"
-                     data-iso="640"
-                     data-shutter="1/60s">
+                     data-camera="Canon EOS Rebel T6" data-lens="EF-S 18-55mm" data-fstop="f/5.0" data-iso="640" data-shutter="1/60s" data-mp="18MP">
             </div>
             <div class="gallery-item">
                 <img src="images/rockychair-2.jpg" alt="Rocky Chair 2"
-                     data-camera="Canon EOS Rebel T6"
-                     data-lens="EF-S 18-55mm"
-                     data-fstop="f/5.6"
-                     data-iso="2500"
-                     data-shutter="1/100s">
+                     data-camera="Canon EOS Rebel T6" data-lens="EF-S 18-55mm" data-fstop="f/5.6" data-iso="2500" data-shutter="1/100s" data-mp="18MP">
             </div>
             <div class="gallery-item">
                 <img src="images/squirrelclose.jpg" alt="Squirrel Close Up"
-                     data-camera="Canon EOS Rebel T6"
-                     data-lens="EF-S 55-250mm"
-                     data-fstop="f/5.6"
-                     data-iso="4000"
-                     data-shutter="1/640s">
+                     data-camera="Canon EOS Rebel T6" data-lens="EF-S 55-250mm" data-fstop="f/5.6" data-iso="4000" data-shutter="1/640s" data-mp="15MP">
             </div>
             <div class="gallery-item">
                 <img src="images/squirreltree1.jpg" alt="Squirrel in Tree"
-                     data-camera="Canon EOS Rebel T6"
-                     data-lens="EF-S 55-250mm"
-                     data-fstop="f/4.5"
-                     data-iso="6400"
-                     data-shutter="1/640s">
+                     data-camera="Canon EOS Rebel T6" data-lens="EF-S 55-250mm" data-fstop="f/4.5" data-iso="6400" data-shutter="1/640s" data-mp="10MP">
             </div>
             <div class="gallery-item">
                 <img src="images/squirrleb&w1.jpg" alt="Squirrel Black and White"
-                     data-camera="Canon EOS Rebel T6"
-                     data-lens="EF-S 55-250mm"
-                     data-fstop="f/5.6"
-                     data-iso="1600"
-                     data-shutter="1/640s">
+                     data-camera="Canon EOS Rebel T6" data-lens="EF-S 55-250mm" data-fstop="f/5.6" data-iso="1600" data-shutter="1/640s" data-mp="7MP">
             </div>
             <div class="gallery-item">
                 <img src="images/starsbetter.jpg" alt="Stars"
-                     data-camera="Canon EOS Rebel T6"
-                     data-lens="EF-S 18-55mm"
-                     data-fstop="f/4.0"
-                     data-iso="6400"
-                     data-shutter="25s">
+                     data-camera="Canon EOS Rebel T6" data-lens="EF-S 18-55mm" data-fstop="f/4.0" data-iso="6400" data-shutter="25s" data-mp="18MP">
             </div>
             <div class="gallery-item">
                 <img src="images/starsbetter1.jpg" alt="Night Sky Stars"
-                     data-camera="Canon EOS Rebel T6"
-                     data-lens="EF-S 18-55mm"
-                     data-fstop="f/3.5"
-                     data-iso="1600"
-                     data-shutter="25s">
-            </div>
-            <div class="gallery-item">
-                <img src="images/succulent.jpg" alt="Succulent Plant"
-                     data-camera="Canon EOS Rebel T6"
-                     data-lens="EF-S 18-55mm"
-                     data-fstop="f/6.3"
-                     data-iso="100"
-                     data-shutter="1/125s">
+                     data-camera="Canon EOS Rebel T6" data-lens="EF-S 18-55mm" data-fstop="f/3.5" data-iso="1600" data-shutter="25s" data-mp="18MP">
             </div>
             <div class="gallery-item">
                 <img src="images/whitecarblueinterior2.jpg" alt="White Car Interior"
-                     data-camera="Canon EOS Rebel T6"
-                     data-lens="EF-S 18-55mm"
-                     data-fstop="f/5.0"
-                     data-iso="100"
-                     data-shutter="1/60s">
+                     data-camera="Canon EOS Rebel T6" data-lens="EF-S 18-55mm" data-fstop="f/5.0" data-iso="100" data-shutter="1/60s" data-mp="18MP">
             </div>
         </div>
     </section>
@@ -560,28 +547,75 @@
             }, 2500);
         }
 
-        /* Lightbox Modal Logic */
         const modal = document.getElementById('photo-modal');
         const modalImg = document.getElementById('modal-img');
         const modalSpecs = document.getElementById('modal-specs');
         const closeBtn = document.getElementById('close-modal');
 
-        document.querySelectorAll('.gallery-item img').forEach(img => {
-            img.addEventListener('click', () => {
-                modalImg.src = img.src;
-                
-                const isoVal = img.dataset.iso ? `ISO ${img.dataset.iso}` : '';
-                const specs = [
-                    img.dataset.camera,
-                    img.dataset.lens,
-                    img.dataset.fstop,
-                    isoVal,
-                    img.dataset.shutter,
-                    '18MP (Compressed)'
-                ].filter(Boolean).join(' • ');
+        function openModal(img) {
+            modalImg.src = img.src;
+            
+            const isoVal = img.dataset.iso ? `ISO ${img.dataset.iso}` : '';
+            const mpVal = img.dataset.mp ? `${img.dataset.mp} (Compressed)` : '';
+            
+            const specs = [
+                img.dataset.camera,
+                img.dataset.lens,
+                img.dataset.fstop,
+                isoVal,
+                img.dataset.shutter,
+                mpVal
+            ].filter(Boolean).join(' • ');
 
-                modalSpecs.textContent = specs;
-                modal.showModal();
+            modalSpecs.textContent = specs;
+            modal.showModal();
+        }
+
+        document.querySelectorAll('.gallery-item:not(.panorama) img').forEach(img => {
+            img.addEventListener('click', () => openModal(img));
+        });
+
+        document.querySelectorAll('.gallery-item.panorama').forEach(pan => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let dragged = false;
+
+            pan.addEventListener('mousedown', (e) => {
+                isDown = true;
+                dragged = false;
+                startX = e.pageX - pan.offsetLeft;
+                scrollLeft = pan.scrollLeft;
+            });
+
+            pan.addEventListener('mouseleave', () => {
+                isDown = false;
+            });
+
+            pan.addEventListener('mouseup', () => {
+                isDown = false;
+            });
+
+            pan.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - pan.offsetLeft;
+                const walk = (x - startX) * 2; 
+                
+                if (Math.abs(walk) > 5) {
+                    dragged = true; 
+                }
+                pan.scrollLeft = scrollLeft - walk;
+            });
+
+            pan.addEventListener('click', (e) => {
+                if (dragged) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                } else {
+                    const img = pan.querySelector('img');
+                    openModal(img);
+                }
             });
         });
 
